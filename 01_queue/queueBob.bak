@@ -1,0 +1,27 @@
+function Queue(){
+	this.queueArray = [];
+	this.value = 0;
+}
+
+Queue.prototype.enqueue = function(str){
+	if (this.value !== 0){
+		for( var i = this.value; i >= 0; i--){
+			this.queueArray[i] = this.queueArray[i-1];
+		}
+	}
+	this.queueArray[0] = str;
+	this.value++;	
+};
+
+Queue.prototype.dequeue = function(){
+	if (this.value === 0){
+		return undefined;
+	}
+	var tail = this.queueArray[this.value-1];
+	this.queueArray[this.value] = null;
+	this.value--;
+	return tail;
+};
+Queue.prototype.size = function(){
+	return this.value;
+};
