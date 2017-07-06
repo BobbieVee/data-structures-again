@@ -98,6 +98,37 @@ LinkedList.prototype.search = function(target, targetNode) {
       }
 };
 
+LinkedList.prototype.searchAndReplace = function(target, targetNode){
+    if (!targetNode) {
+      targetNode = this.head;
+    }
+    if (targetNode.value.key === target.key){
+      targetNode.value.value = target.value;
+      return true; 
+    } 
+    else  if (targetNode.next  === null){
+      return null;
+    } else {
+      return this.searchAndReplace(target, targetNode.next)
+    }
+
+    // }
+
+    // if (typeof target !== 'function' && targetNode.value === target) {
+    //   return targetNode.value;
+    // }
+    // else if (typeof target === 'function' && target(targetNode.value)){
+    //   return targetNode.value;
+    // }
+    // else if (targetNode.next === null) {
+    //     return null;
+    //   }
+    //   else {
+    //     return this.search(target, targetNode.next);
+    //   }
+
+}
+
 function Node(element) {
   this.value = element;
   this.next = null;
